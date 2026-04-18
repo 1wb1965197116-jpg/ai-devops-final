@@ -1,19 +1,13 @@
-const mongoose = require("../db");
+const mongoose = require("../db"); // ✅ ONLY THIS
+
 const bcrypt = require("bcrypt");
 
 const UserSchema = new mongoose.Schema({
-  email: String,
-  password: String
-});
-const mongoose = require("../db");
-
-const User = mongoose.model("User", {
   email: String,
   password: String,
   role: { type: String, default: "user" }
 });
 
-module.exports = User;
 UserSchema.pre("save", async function () {
   this.password = await bcrypt.hash(this.password, 10);
 });
