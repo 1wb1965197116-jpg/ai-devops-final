@@ -18,3 +18,11 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("🧠 v43 Command Center running");
 });
+const cron = require("node-cron");
+const { runAI } = require("./core/orchestrator");
+
+// every 5 minutes
+cron.schedule("*/5 * * * *", async () => {
+  console.log("🔁 Auto AI running...");
+  await runAI();
+});
