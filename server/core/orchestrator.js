@@ -1,15 +1,22 @@
 const Task = require("../models/Task");
+const Log = require("../models/Log");
 const { processQueue } = require("./queue");
 
 async function runAI() {
 
-  // Get pending tasks
-  const tasks = await Task.find({ status: "pending" });
+  await Task.create({
+    type: "auto",
+    name: "system check",
+    status: "pending"
+  });
 
-  // Process them
-  const processed = await processQueue();
+  const result = await processQueue();
 
-  return processed;
+  await Log.create({
+    message: "AI executed cycle"
+  });
+
+  return result;
 }
 
 module.exports = { runAI };
