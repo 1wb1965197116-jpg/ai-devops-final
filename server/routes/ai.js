@@ -39,3 +39,8 @@ router.get("/deploy-status", (req, res) => {
 await Log.create({
   message: "AI run executed"
 });
+const Log = require("../models/Log");
+
+await Log.create({
+  message: "AI run executed"
+});
