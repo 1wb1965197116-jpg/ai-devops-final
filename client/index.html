@@ -1,22 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>AI DevOps</title>
+  <title>AI DevOps Command Center</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<h1>AI DevOps Dashboard</h1>
+<h1>🧠 AI DevOps Command Center</h1>
 
 <button onclick="runAI()">Run AI</button>
 <button onclick="loadAll()">Refresh</button>
 
-<h3>Tasks</h3>
+<hr>
+
+<h2>📋 Tasks</h2>
 <pre id="tasks"></pre>
 
-<h3>Logs</h3>
+<h2>📊 Logs</h2>
 <pre id="logs"></pre>
 
+<hr>
+
+<h2>🔐 Token Manager</h2>
+<input id="tokenInput" placeholder="Paste API Key">
+<button onclick="saveToken()">Save</button>
+<button onclick="clearTokens()">Delete All</button>
+<pre id="tokens"></pre>
+
+<hr>
+
+<h2>📋 Copy/Paste AI</h2>
+<input id="copyInput" placeholder="Paste value to copy">
+<button onclick="copyValue()">Copy</button>
+
+<input id="targetInput" placeholder="Where to paste (Render / Mongo / etc)">
+<button onclick="pasteValue()">Paste</button>
+
+<pre id="cpStatus"></pre>
+
+<hr>
+
+<h2>📷 Camera Scanner</h2>
+<video id="camera" width="300" autoplay></video><br>
+<button onclick="startCamera()">Start Camera</button>
+<button onclick="stopCamera()">Stop Camera</button>
+
 <script src="app.js"></script>
+
 </body>
 </html>
