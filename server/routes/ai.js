@@ -34,5 +34,8 @@ router.get("/prs", (req, res) => {
 
 // ---------------- DEPLOY STATUS
 router.get("/deploy-status", (req, res) => {
-  res.json(deployStatus);
+  res.json(const Log = require("../models/Log");
+
+await Log.create({
+  message: "AI run executed"
 });
