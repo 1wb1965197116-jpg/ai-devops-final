@@ -17,7 +17,26 @@ async function loadAll() {
     JSON.stringify(l, null, 2);
 }
 
-// ===== TOKEN SYSTEM =====
+// ===== COMMAND CONSOLE =====
+
+async function sendCommand() {
+
+  const command = document.getElementById("cmd").value;
+  const value = document.getElementById("cmdValue").value;
+
+  const res = await fetch("/ai/command", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ command, value })
+  });
+
+  const data = await res.json();
+
+  document.getElementById("cmdOut").innerText =
+    JSON.stringify(data, null, 2);
+}
+
+// ===== TOKEN SYSTEM (CLIENT VIEW ONLY) =====
 
 let tokens = [];
 
@@ -45,14 +64,14 @@ function copyValue() {
   storedValue = document.getElementById("copyInput").value;
 
   document.getElementById("cpStatus").innerText =
-    "✅ Copied successfully";
+    "✅ Copied";
 }
 
 function pasteValue() {
   const target = document.getElementById("targetInput").value;
 
   document.getElementById("cpStatus").innerText =
-    `📌 Target: ${target}\nValue: ${storedValue}\nStatus: SUCCESS`;
+    `📌 Target: ${target}\nValue: ${storedValue}\nStatus: READY`;
 }
 
 // ===== CAMERA =====
@@ -64,7 +83,7 @@ async function startCamera() {
     stream = await navigator.mediaDevices.getUserMedia({ video: true });
     document.getElementById("camera").srcObject = stream;
   } catch (e) {
-    alert("Camera error");
+    alert("Camera access denied or not available");
   }
 }
 
