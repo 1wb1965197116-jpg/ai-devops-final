@@ -84,3 +84,15 @@ router.get("/logs", async (req, res) => {
 });
 
 module.exports = router;
+let latestBridgeCommand = null;
+
+// SEND COMMAND TO BROWSER
+router.post("/bridge/send", (req, res) => {
+  latestBridgeCommand = req.body;
+  res.json({ status: "sent" });
+});
+
+// TAMPERMONKEY POLL
+router.get("/bridge", (req, res) => {
+  res.json(latestBridgeCommand || {});
+});
