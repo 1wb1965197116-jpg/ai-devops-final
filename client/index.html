@@ -14,63 +14,57 @@
 
 <hr>
 
-<h2>📋 Tasks</h2>
+<h2>Tasks</h2>
 <pre id="tasks"></pre>
 
-<h2>📊 Logs</h2>
+<h2>Logs</h2>
 <pre id="logs"></pre>
 
 <hr>
 
-<h2>🧠 AI Command Console</h2>
-
+<h2>Command Console</h2>
 <input id="cmd" placeholder="Command">
 <input id="cmdValue" placeholder="Value">
 <button onclick="sendCommand()">Execute</button>
-
 <pre id="cmdOut"></pre>
 
 <hr>
 
-<h2>🔐 Token Manager</h2>
-
+<h2>Token Manager</h2>
 <input id="tokenInput">
 <button onclick="saveToken()">Save</button>
 <button onclick="clearTokens()">Clear</button>
-
 <pre id="tokens"></pre>
 
 <hr>
 
-<h2>📋 Copy / Paste AI</h2>
-
+<h2>Copy / Paste</h2>
 <input id="copyInput">
 <button onclick="copyValue()">Copy</button>
 
 <input id="targetInput">
 <button onclick="pasteValue()">Paste</button>
-
 <pre id="cpStatus"></pre>
 
 <hr>
 
-<h2>📷 Camera</h2>
-
+<h2>Camera</h2>
 <video id="camera" width="300" autoplay></video><br>
 <button onclick="startCamera()">Start</button>
+<button onclick="flipCamera()">Flip</button>
 <button onclick="stopCamera()">Stop</button>
 
 <hr>
 
-<h2>🌉 Browser Bridge</h2>
-
+<h2>Browser Bridge</h2>
 <input id="selector" placeholder="CSS selector">
 <input id="value" placeholder="Value">
-
 <button onclick="sendToBrowserPaste(
   document.getElementById('selector').value,
   document.getElementById('value').value
 )">Send Paste</button>
+
+<pre id="bridgeStatus"></pre>
 
 <script src="app.js"></script>
 
