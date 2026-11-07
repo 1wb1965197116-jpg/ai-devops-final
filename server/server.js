@@ -14,19 +14,7 @@ app.use(express.static("client"));
 
 app.use("/ai", aiRoutes);
 
-// SAFE CRON (won’t crash if missing)
-try {
-  const cron = require("node-cron");
-  const { runAI } = require("./core/orchestrator");
-
-  cron.schedule("*/5 * * * *", async () => {
-    console.log("🔁 Auto AI running...");
-    await runAI();
-  });
-
-} catch {
-  console.log("Cron not loaded");
-}
+// Automatic agent execution is disabled pending security review.
 
 const PORT = process.env.PORT || 3000;
 

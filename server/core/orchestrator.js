@@ -33,43 +33,13 @@ function classifyStep(step) {
 // ===== ACTIONS =====
 
 async function deployRender() {
-  const key = process.env.RENDER_API_KEY;
-  const SERVICE_ID = process.env.RENDER_SERVICE_ID;
-
-  if (!key || !SERVICE_ID)
-    return { error: "Missing Render config" };
-
-  await fetch(`https://api.render.com/v1/services/${SERVICE_ID}/deploys`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${key}`
-    }
-  });
-
-  return { status: "deploy_triggered" };
+  return { error: "Remote deployment disabled pending authentication and review" };
 }
-
 async function pushGitHub() {
   return { status: "github_push_simulated" };
 }
-
-async function updateEnv(key, value) {
-  const apiKey = process.env.RENDER_API_KEY;
-  const SERVICE_ID = process.env.RENDER_SERVICE_ID;
-
-  if (!apiKey || !SERVICE_ID)
-    return { error: "Missing Render config" };
-
-  await fetch(`https://api.render.com/v1/services/${SERVICE_ID}/env-vars`, {
-    method: "PUT",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify([{ key, value }])
-  });
-
-  return { status: "env_updated", key };
+async function updateEnv() {
+  return { error: "Remote environment updates disabled pending authentication and review" };
 }
 
 // ===== EXECUTOR =====
